@@ -1,9 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as dotenv from 'dotenv';
 import { AppModule } from './app.module';
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  dotenv.config({ path: '.development.env' });
 
   const config = new DocumentBuilder()
     .setTitle('Test Assignment API for Stakeme')
@@ -19,7 +20,8 @@ async function bootstrap() {
   // app.setGlobalPrefix('api');
 
   app.enableCors();
-  await app.listen(3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
 }
 
 bootstrap();
