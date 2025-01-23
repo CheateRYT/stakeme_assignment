@@ -1,17 +1,38 @@
-// interfaces/cosmos-block.interface.ts
-export interface CosmosBlock {
+import { ApiProperty } from '@nestjs/swagger';
+
+export class CosmosBlock {
+  @ApiProperty()
   height: number;
+
+  @ApiProperty()
   time: string;
+
+  @ApiProperty()
   hash: string;
+
+  @ApiProperty()
   proposedAddress: string;
 }
 
-export interface CosmosTransaction {
+export class CosmosTransaction {
+  @ApiProperty()
   hash: string;
+
+  @ApiProperty()
   height: number;
+
+  @ApiProperty()
   time: string;
+
+  @ApiProperty()
   gasUsed: string;
+
+  @ApiProperty()
   gasWanted: string;
+
+  @ApiProperty()
   fee: string;
+
+  @ApiProperty()
   sender: string;
 }
