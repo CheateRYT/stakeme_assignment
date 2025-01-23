@@ -5,7 +5,7 @@ import {
   EthBlock,
   EthTransaction,
   JsonRpcResponse,
-} from './interfaces/json-rpc.response';
+} from './interfaces/json-rpc.response.evm';
 
 @Injectable()
 export class EvmService {
