@@ -1,0 +1,37 @@
+Не особо понял задачу поэтому 3 варианта сделал)
+1. 
+
+select * from test_txs WHERE block_height IN (2, 3) order by block_height DESC
+
+----------
+cost=11.51..11.52 rows=2 width=604
+
+2.
+
+select * from test_txs WHERE block_height IN (2, 3) order by block_height DESC LIMIT 10
+
+------
+cost=11.51..11.52 rows=2 width=604
+
+3.
+
+SELECT *
+FROM (
+    SELECT *
+    FROM test_txs
+    WHERE block_height = 3
+    ORDER BY block_height DESC
+    LIMIT 10
+) AS subquery_3
+UNION ALL
+SELECT *
+FROM (
+    SELECT *
+    FROM test_txs
+    WHERE block_height = 2
+    ORDER BY block_height DESC
+    LIMIT 10
+) AS subquery_2;
+
+------
+cost=0.00..23.01 rows=2 width=604
