@@ -22,6 +22,7 @@ export class CosmosController {
     return this.cosmosService.getBlock(height);
   }
 
+//Нужно передавать именно hex string транзакции
   @Get('transactions/:hash')
   @ApiResponse({
     status: 200,
