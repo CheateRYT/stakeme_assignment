@@ -33,6 +33,7 @@ export class CosmosService {
     }
   }
 
+//Нужно передавать именно hex string транзакции
   async getTransaction(hash: string): Promise<CosmosTransaction> {
     const url = `${this.cosmosRpcUrl}/${hash}`;
 
